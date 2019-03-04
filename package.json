@@ -1,0 +1,23 @@
+{
+  "name": "WebGL-demo",
+  "version": "1.0.0",
+  "main": "three.js",
+  "dependencies": {
+    "three": "^0.102.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiongmeihui/WebGL-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiongmeihui/WebGL-demo/issues"
+  },
+  "homepage": "https://github.com/xiongmeihui/WebGL-demo#readme"
+}

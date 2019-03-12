@@ -7,6 +7,7 @@ import {
   MeshBasicMaterial,
   Mesh,
 } from 'three'
+
 // 场景（所有物体的容器）
 var scene = new Scene()
 // 相机 (决定了场景中那个角度的景色会显示出来)

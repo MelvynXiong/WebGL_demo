@@ -13,6 +13,7 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-middleware": "^3.6.1",
+    "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.2.1"
   },
   "scripts": {

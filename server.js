@@ -10,6 +10,7 @@ const compiler = webpack(config)
 const port = 8080
 
 /** 配置开发环境 middleware */
+
 const DevMiddlewareInstance = webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,
 })

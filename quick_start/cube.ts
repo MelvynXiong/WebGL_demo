@@ -1,17 +1,17 @@
-import './cube.css'
 import {
-  Scene,
-  PerspectiveCamera,
-  WebGLRenderer,
-  CubeGeometry,
-  MeshBasicMaterial,
+  BoxGeometry,
   Mesh,
+  MeshBasicMaterial,
+  PerspectiveCamera,
+  Scene,
+  WebGLRenderer,
 } from 'three'
+import './cube.css'
 
 // 场景（所有物体的容器）
-var scene = new Scene()
+const scene = new Scene()
 // 相机 (决定了场景中那个角度的景色会显示出来)
-var camera = new PerspectiveCamera(
+const camera = new PerspectiveCamera(
   // field of view (单位为度), 表示一个人通过一个光学仪器所能观测到的区域范围
   // 在0-180degree的正常范围内，值越大，观测到的东西越多，但相应的物体会显得小
   75,
@@ -20,17 +20,17 @@ var camera = new PerspectiveCamera(
   1000 // far clipping plane
 )
 // 渲染器 (决定以怎样的方式来绘制渲染的结果)
-var renderer = new WebGLRenderer()
+const renderer = new WebGLRenderer()
 // 设置渲染器的大小为窗口的内宽度，也就是内容区的宽度
 renderer.setSize(window.innerWidth / 2, window.innerHeight / 2)
 // domElement元素, 表示渲染器中的画布, 所有的渲染都是画在domElement上的
 document.body.appendChild(renderer.domElement)
 
 // 创建一个正方体或长方体(前三个参数分别是长宽高)
-var geometry = new CubeGeometry(2, 2, 2)
+const geometry = new BoxGeometry(2, 2, 2)
 // 填色块
-var material = new MeshBasicMaterial({ color: 0x0000ff })
-var cube = new Mesh(geometry, material)
+const material = new MeshBasicMaterial({ color: 0x0000ff })
+const cube = new Mesh(geometry, material)
 // 添加创建好的物体到场景中
 scene.add(cube)
 camera.position.z = 5 // 当该值为0，时camera和cube重叠在一起，该值越大，说明相机离场景距离越远，物体也就看起来越小

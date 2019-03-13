@@ -1,0 +1,10 @@
+{
+  "extends": ["tslint-config-alloy", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["**/node_modules/**"]
+  },
+  "rules": {
+    "no-magic-numbers": false,
+    "no-implicit-dependencies": false
+  }
+}

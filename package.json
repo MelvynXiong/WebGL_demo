@@ -26,9 +26,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config ./config/webpack.prod.js",
     "watch": "webpack --config webpack.prod.js --watch",
-    "start": "nodemon server.js"
+    "start": "nodemon ./config/server.js"
   },
   "repository": {
     "type": "git",

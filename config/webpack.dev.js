@@ -1,8 +1,9 @@
 const merge = require('webpack-merge')
 const common = require('./webpack.common')
 const webpack = require('webpack')
+const path = require('path')
 module.exports = merge(common, {
-  entry: ['webpack-hot-middleware/client?reload=true', './quick_start/cube.ts'],
+  entry: ['webpack-hot-middleware/client?reload=true', path.resolve(__dirname, '../drawLine/index.ts')],
   output: {
     publicPath: '/',
   },

@@ -38,14 +38,14 @@ function initCamera() {
   camera = new PerspectiveCamera(
     // field of view (单位为度), 表示一个人通过一个光学仪器所能观测到的区域范围
     // 在0-180degree的正常范围内，值越大，观测到的东西越多，但相应的物体会显得小
-    45,
+    90,
     width / height, // aspect ratio 屏幕纵横比
-    1, // near clipping plane 离camera太近或太远的物体都不会被渲染
-    10000 // far clipping plane
+    0.1, // near clipping plane 离camera太近或太远的物体都不会被渲染
+    1000 // far clipping plane
   )
   // 设置camera的当前位置 默认情况下，camera和scene位置重合
-  camera.position.x = 0
-  camera.position.y = 0
+  camera.position.x = 5
+  camera.position.y = 5
   camera.position.z = 5
   // 设置坐标轴的方向, 默认是y轴向上, 改变3d坐标系的方向
   // camera.up.x = 0
@@ -72,28 +72,47 @@ function initLight() {
   scene.add(light)
 }
 // 初始化待展示的对象
-function initObject() {
+function initX() {
   // 定义一个几何体的参数
   const geometry = new Geometry()
   // 定义一个集合体的样式
-  const material = new LineBasicMaterial({ vertexColors: VertexColors })
+  const material = new LineBasicMaterial({ color: '#f00' })
 
-  const c1 = new Color('#444')
-  const c2 = new Color('#F00')
-  const p1 = new Vector3(-100, 0, 100)
-  const p2 = new Vector3(100, 0, -100)
+  const p1 = new Vector3(-10, 0, 0)
+  const p2 = new Vector3(10, 0, 0)
   geometry.vertices.push(p1)
   geometry.vertices.push(p2)
-  geometry.colors.push(c1, c2)
   const line = new Line(geometry, material)
   // 添加创建好的物体到场景中
   scene.add(line)
 }
-function initCube() {
-  const geometry = new BoxGeometry(2, 2, 2)
-  const material = new MeshBasicMaterial({ color: 0x0000ff })
-  const cube = new Mesh(geometry, material)
-  scene.add(cube)
+function initY() {
+  // 定义一个几何体的参数
+  const geometry = new Geometry()
+  // 定义一个集合体的样式
+  const material = new LineBasicMaterial({ color: '#0f0' })
+
+  const p1 = new Vector3(0, -10, 0)
+  const p2 = new Vector3(0, 10, 0)
+  geometry.vertices.push(p1)
+  geometry.vertices.push(p2)
+  const line = new Line(geometry, material)
+  // 添加创建好的物体到场景中
+  scene.add(line)
+}
+function initZ() {
+  // 定义一个几何体的参数
+  const geometry = new Geometry()
+  // 定义一个集合体的样式
+  const material = new LineBasicMaterial({ color: '#00f' })
+
+  const p1 = new Vector3(0, 0, -10)
+  const p2 = new Vector3(0, 0, 10)
+  geometry.vertices.push(p1)
+  geometry.vertices.push(p2)
+  const line = new Line(geometry, material)
+  // 添加创建好的物体到场景中
+  scene.add(line)
 }
 
 function render() {
@@ -110,9 +129,9 @@ function start() {
   initRenderer()
   initCamera()
   initScene()
-  initLight()
-  // initObject()
-  initCube()
+  initX()
+  initY()
+  initZ()
   render()
 }
 

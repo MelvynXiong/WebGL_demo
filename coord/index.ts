@@ -1,16 +1,11 @@
 import {
-  BoxGeometry,
-  Color,
   DirectionalLight,
   Geometry,
   Line,
   LineBasicMaterial,
-  Mesh,
-  MeshBasicMaterial,
   PerspectiveCamera,
   Scene,
   Vector3,
-  VertexColors,
   WebGLRenderer,
 } from 'three'
 
@@ -51,12 +46,8 @@ function initCamera() {
   // camera.up.x = 0
   // camera.up.y = 0
   // camera.up.z = 1
-  //  设置相机的焦点
-  // camera.lookAt({
-  //   x: 0,
-  //   y: 0,
-  //   z: 0,
-  // })
+  //  设置相机面对的方向, lookat方向默认是z轴负半轴
+  camera.lookAt(0, 0, 0)
 }
 
 // 初始化场景（所有物体的容器）

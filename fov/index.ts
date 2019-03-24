@@ -3,6 +3,7 @@ import {
   CylinderGeometry,
   Mesh,
   MeshLambertMaterial,
+  OrthographicCamera,
   PerspectiveCamera,
   PointLight,
   Scene,
@@ -29,11 +30,20 @@ function initRenderer() {
 }
 // 初始化camera (决定了场景中那个角度的景色会显示出来)
 function initCamera() {
+  // 正投影模式下的相机
+  // camera = new OrthographicCamera(
+  //   width / -2,
+  //   width / 2,
+  //   height / 2,
+  //   height / -2,
+  //   10,
+  //   1000
+  // )
   // 透视图模式下的相机
   camera = new PerspectiveCamera(
     // field of view (单位为度), 表示一个人通过一个光学仪器所能观测到的区域范围
     // 在0-180degree的正常范围内，值越大，观测到的东西越多，但相应的物体会显得小
-    45,
+    170,
     width / height, // aspect ratio 屏幕纵横比
     0.1, // near clipping plane 离camera太近或太远的物体都不会被渲染
     1000 // far clipping plane
@@ -66,20 +76,18 @@ function initLight() {
   scene.add(l2)
 }
 function initObject() {
-  const geometry = new CylinderGeometry(150, 150, 400)
+  const geometry = new CylinderGeometry(100, 150, 400)
   const material = new MeshLambertMaterial({ color: '#f00' })
   const cube = new Mesh(geometry, material)
   scene.add(cube)
 }
 
-function render() {
-  // 相机不断向右移动，相对来说物体就向左了
-  camera.position.x++
+function animation() {
   // 结合相机和场景来得到结果画面
   renderer.render(scene, camera)
   // 使浏览器调用一次参数中的函数，形成循环（60fps）
   // 使用该函数来进行不间断渲染而不用setInterval, 是因为当用户暂时切换到其他tab时，渲染会暂停，节约资源
-  requestAnimationFrame(render)
+  requestAnimationFrame(animation)
 }
 
 function start() {
@@ -88,7 +96,7 @@ function start() {
   initScene()
   initLight()
   initObject()
-  render()
+  animation()
 }
 
 start()

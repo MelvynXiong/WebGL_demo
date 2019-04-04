@@ -14,10 +14,12 @@ import {
   PlaneGeometry,
   PointLight,
   Scene,
+  TextureLoader,
   Vector3,
   WebGLRenderer,
+  Texture,
 } from 'three'
-
+import Water from './water.png'
 let renderer: any // 渲染器
 let camera: any // 相机
 let scene: any // 场景
@@ -48,8 +50,8 @@ function initCamera() {
     1000 // far clipping plane
   )
   // 设置camera的当前位置 默认情况下，camera和scene位置重合
-  camera.position.x = 500
-  camera.position.y = 500
+  camera.position.x = 0
+  camera.position.y = 0
   camera.position.z = 500
   // 设置坐标轴的方向, 默认是y轴向上, 改变3d坐标系的方向
   // camera.up.x = 0
@@ -63,11 +65,27 @@ function initCamera() {
 function initScene() {
   scene = new Scene()
 }
-
+// 初始化光线
+function initLight() {
+  const l1 = new AmbientLight(0xffffff)
+  // Vector3对象的方法
+  l1.position.set(100, 100, 200)
+  scene.add(l1)
+}
 function initObject() {
   const geometry = new PlaneGeometry(500, 300, 4, 4)
-  const texture = 
-  const material = new MeshBasicMaterial({ map:texture })
+  console.log(geometry)
+  const texture = new TextureLoader().load(
+    'dac464cd4a1bd86f6b7d696e4dd09077.png',
+    texture => {
+      console.log(texture)
+    },
+    undefined,
+    err => {
+      console.log(err)
+    }
+  )
+  const material = new MeshBasicMaterial({ map: texture })
   const plane = new Mesh(geometry, material)
   scene.add(plane)
 }
@@ -125,6 +143,7 @@ function start() {
   initRenderer()
   initCamera()
   initScene()
+  initLight()
   initObject()
   initX()
   initY()
